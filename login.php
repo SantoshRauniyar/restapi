@@ -14,23 +14,27 @@ if (isset($email) and isset($password)) {
 	if ($row['name']==$email) {
 		if ($row['password']==$password) {
 			$response=['status'=>'200','message'=>'Login Success'];
+http_response_code(200);
 		}
 		else
 		{
 			$response=['status'=>'404','message'=>'User not found Response'];
-		}
+	http_response_code(404);	
+}
 		
 	}
 	else
 	{
 		$response=['status'=>'404','message'=>'User Not Found'];
-	}
+http_response_code(404);	
+}
 	
 }
 else
 {
 
 $response=['status'=>'403','message'=>'Login failed'];
+http_response_code(403);
 }
 
 print_r(json_encode($response));
